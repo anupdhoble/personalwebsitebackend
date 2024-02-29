@@ -13,7 +13,8 @@ router.get('/getAll', async (req, res) => {
 });
 
 // Create a new blog
-router.post('/create', async (req, res) => {
+const GET_ALL_BLOGS=process.env.GET_ALL_BLOGS;
+router.post(GET_ALL_BLOGS, async (req, res) => {
     try {
         const { uid, title, content, author } = req.body;
         if (!uid || !title || !content || !author) {
@@ -28,7 +29,8 @@ router.post('/create', async (req, res) => {
 });
 
 //Delete a blog
-router.delete('/remove/:id', async (req, res) => {
+const DELETE_BLOG=process.env.DELETE_BLOG;
+router.delete(DELETE_BLOG, async (req, res) => {
     try {
         const deletedBlog = await Blogs.findByIdAndDelete(req.params.id);
         res.status(200).json(deletedBlog);
@@ -37,7 +39,8 @@ router.delete('/remove/:id', async (req, res) => {
     }
 });
 //Update a blog
-router.put('/update/:id', async (req, res) => {
+const UPDATE_BLOG=process.env.UPDATE_BLOG;
+router.put(UPDATE_BLOG, async (req, res) => {
     try {
         const { title, content } = req.body;
         if ( !title || !content ) {
