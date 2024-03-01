@@ -16,11 +16,11 @@ router.get('/getAll', async (req, res) => {
 const GET_ALL_BLOGS=process.env.GET_ALL_BLOGS;
 router.post(GET_ALL_BLOGS, async (req, res) => {
     try {
-        const { uid, title, content, author } = req.body;
+        const { uid, title, content, author ,imgUrl} = req.body;
         if (!uid || !title || !content || !author) {
             return res.status(400).json({ msg: "Not all fields have been entered." });
         }
-        const newBlog = new Blogs({ uid, title, content, author });
+        const newBlog = new Blogs({ uid, title, content, author ,imgUrl});
         await newBlog.save();
         res.status(201).json(newBlog);
     } catch (error) {
