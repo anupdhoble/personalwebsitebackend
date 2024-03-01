@@ -25,6 +25,10 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required:false
     
+    },
+    imgRefToFirebase:{
+        type: String,
+        required:false
     }
 });
 
