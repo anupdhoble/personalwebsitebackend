@@ -29,6 +29,10 @@ const blogSchema = new mongoose.Schema({
     imgRefToFirebase:{
         type: String,
         required:false
+    },
+    likecount:{
+        type: Number,
+        default: 0
     }
 });
 

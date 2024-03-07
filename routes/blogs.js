@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Blogs = require('../models/Blogs');
 
+const GET_ALL_BLOGS=process.env.GET_ALL_BLOGS;
 // Get all blogs
-router.get('/getAll', async (req, res) => {
+router.get(GET_ALL_BLOGS, async (req, res) => {
     try {
         const blogs = await Blogs.find();
         res.status(200).json(blogs);
@@ -12,9 +13,20 @@ router.get('/getAll', async (req, res) => {
     }
 });
 
+// Get a blog
+const GET_A_BLOG=process.env.GET_A_BLOG;
+router.get(GET_A_BLOG, async (req, res) => {
+    try {
+        const blog = await Blogs.findById(req.params.id);
+        res.status(200).json(blog);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // Create a new blog
-const GET_ALL_BLOGS=process.env.GET_ALL_BLOGS;
-router.post(GET_ALL_BLOGS, async (req, res) => {
+const CREATE_BLOG=process.env.CREATE_BLOG;
+router.post(CREATE_BLOG, async (req, res) => {
     try {
         const { uid, title, content, author ,imgUrl,imgRefToFirebase} = req.body;
         if (!uid || !title || !content || !author) {
