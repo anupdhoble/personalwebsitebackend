@@ -1,16 +1,13 @@
-import mongoose from 'mongoose';
-const {Schema}=mongoose;
+const mongoose = require('mongoose');
 
-const commentSchema = new Schema({
-    uid:{
-        type: String,
-        required: true
-    },
+
+const commentSchema = new mongoose.Schema({
+    
     commenter:{
         type: String,
         required: true
     },
-    blogId:{
+    blogid:{
         type: String,
         required: true
     },

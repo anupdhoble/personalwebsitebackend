@@ -22,3 +22,4 @@ mongoose.connect(uri).then(() => {
 });
 
 app.use('/blogs', require('./routes/blogs.js'));
+app.use('/comments', require('./routes/comments.js'));
