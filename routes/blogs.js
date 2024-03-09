@@ -40,6 +40,8 @@ router.post(CREATE_BLOG, async (req, res) => {
     }
 });
 
+
+
 //Delete a blog
 const DELETE_BLOG=process.env.DELETE_BLOG;
 router.delete(DELETE_BLOG, async (req, res) => {

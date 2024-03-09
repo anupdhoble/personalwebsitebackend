@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 
 
 const commentSchema = new mongoose.Schema({
+    ipaddress:{
+        type: String,
+        required: false
+    },
+    uid:{
+        type: String,
+        required: true
+    },
     
     commenter:{
         type: String,

@@ -4,13 +4,13 @@ const Comments = require('../models/Comments');
 
 
 // Create a new comment
-router.get('/create', async(req, res) => {
+router.post('/create', async(req, res) => {
     try{
-        const { commenter, blogid, content } = req.body;
-        if ( !commenter || !blogid || !content) {
+        const { ipaddress,uid,commenter, blogid, content } = req.body;
+        if ( !uid || !commenter || !blogid || !content) {
             return res.status(400).json({ msg: "Not all fields have been entered." });
         }
-        const newComment = new Comments({ commenter, blogid, content });
+        const newComment = new Comments({ ipaddress,uid,commenter, blogid, content });
         await newComment.save();
         res.status(201).json(newComment);
     }catch{
