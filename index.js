@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
-const uri =process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri).then(() => {
     console.log('App connected to database');
     app.listen(PORT, () => {
@@ -20,6 +20,8 @@ mongoose.connect(uri).then(() => {
 }).catch((error) => {
     console.log(error);
 });
-
+app.get('/', (req, res) => {
+    res.sendStatus(200);
+}) //Health check for render service in deployment
 app.use('/blogs', require('./routes/blogs.js'));
 app.use('/comments', require('./routes/comments.js'));
